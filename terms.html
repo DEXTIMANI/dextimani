@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dextimani - Graphic Design</title>
+    <style>
+        /* 1. Global Styles & Background */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background-color: #121212;
+            /* Using a dark leather-style gradient overlay */
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('https://www.transparenttextures.com/patterns/dark-leather.png');
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        /* 2. Fade-In Animation */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 3. Header Section */
+        header {
+            padding: 40px 20px;
+        }
+
+        .brand-name {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #d1f1ff; /* Light blue tint like your image */
+            margin: 10px 0;
+            text-transform: uppercase;
+        }
+
+        .neon-text {
+            color: #39FF14;
+            font-size: 3rem;
+            font-weight: 900;
+            margin: 20px 0 5px 0;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        .instruction {
+            color: #FFD700;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* 4. Carousel Styles */
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px;
+            scrollbar-width: none; /* Hide scrollbar Firefox */
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar Chrome/Safari */
+        }
+
+        .card {
+            flex: 0 0 70%; /* Shows part of next card on mobile */
+            max-width: 300px;
+            scroll-snap-align: center;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .card:active {
+            transform: scale(0.95);
+        }
+
+        /* 5. Labels and Buttons */
+        .label-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 15px;
+            font-weight: bold;
+            color: #FFD700;
+        }
+
+        .order-btn {
+            margin-top: 30px;
+            background: transparent;
+            border: 4px solid #39FF14;
+            color: #FFD700;
+            padding: 12px 40px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .order-btn:hover {
+            background: #39FF14;
+            color: black;
+        }
+
+        .footer-desc {
+            margin-top: 30px;
+            color: #FFD700;
+            font-size: 1.1rem;
+            padding: 0 20px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="fade-in">
+        <header>
+            <div class="brand-name">DEXTIMANI</div>
+            <h1>Graphic Design <br> and Prints</h1>
+            <p>We give you the best</p>
+        </header>
+
+        <div class="neon-text">LOGOS</div>
+        <div class="instruction">PRESS IMAGE TO SELECT LOGO TYPE</div>
+
+        <div class="carousel-container">
+            <div class="card" onclick="sendWhatsApp('2D Design')">
+                <img src="https://via.placeholder.com/300x300?text=2D+Logo+Sample" alt="2D Logo">
+            </div>
+            <div class="card" onclick="sendWhatsApp('3D Design')">
+                <img src="https://via.placeholder.com/300x300?text=3D+Logo+Sample" alt="3D Logo">
+            </div>
+            <div class="card" onclick="sendWhatsApp('Minimalist Design')">
+                <img src="https://via.placeholder.com/300x300?text=Minimalist+Sample" alt="Minimalist Logo">
+            </div>
+            <div class="card" onclick="sendWhatsApp('Typography Design')">
+                <img src="https://via.placeholder.com/300x300?text=Typography+Sample" alt="Typography Logo">
+            </div>
+        </div>
+
+        <div class="label-container">
+            <span>2D Designs</span>
+            <span>3D Designs</span>
+        </div>
+
+        <button class="order-btn" onclick="sendWhatsApp('Any Custom Design')">Order Any</button>
+
+        <p class="footer-desc">
+            Beautiful logos to make clients trust you <br>
+            Make a description, or let us do the best for you
+        </p>
+    </div>
+
+    <script>
+        function sendWhatsApp(logoType) {
+            const phoneNumber = "1234567890"; // REPLACE WITH YOUR PHONE NUMBER (include country code, no + sign)
+            const text = `Hello Dextimani! I'm interested in a ${logoType}. Can you help me with a quote?`;
+            const encodedText = encodeURIComponent(text);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedText}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>

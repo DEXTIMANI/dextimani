@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dextimani - Video & Photography Services</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body,html{margin:0;padding:0;height:100%;background:#121212;background-image:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('https://www.transparenttextures.com/patterns/dark-leather.png');font-family:'Segoe UI',Tahoma,Verdana,sans-serif;color:white;text-align:center;overflow-x:hidden}
+.fade-in{animation:fadeIn 1.5s forwards}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
+header{padding:40px 20px}
+.brand-name{font-size:1.2rem;letter-spacing:2px;font-weight:bold}
+h1{font-size:2rem;color:#d1f1ff;margin:10px 0;text-transform:uppercase}
+.neon-text{color:#39FF14;font-size:2.3rem;font-weight:900;margin:20px 0 5px;text-shadow:0 0 10px rgba(57,255,20,.5)}
+.instruction{color:#FFD700;font-size:.9rem;font-weight:bold;margin-bottom:30px}
+.carousel-container{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;padding:20px;scrollbar-width:none}
+.carousel-container::-webkit-scrollbar{display:none}
+.card{flex:0 0 70%;max-width:300px;scroll-snap-align:center;background:white;border-radius:20px;overflow:hidden;transition:transform 0.3s ease;cursor:pointer}
+.card img{width:100%;height:auto;display:block}
+.card:active{transform:scale(0.95)}
+.label-container{display:flex;justify-content:center;gap:40px;margin-top:15px;font-weight:bold;color:#FFD700;flex-wrap:wrap}
+.order-btn{margin-top:30px;background:transparent;border:4px solid #39FF14;color:#FFD700;padding:12px 40px;font-size:1.5rem;font-weight:bold;border-radius:5px;cursor:pointer;transition:.3s}
+.order-btn:hover{background:#39FF14;color:black}
+.footer-desc{margin-top:20px;color:#FFD700;font-size:1.1rem;padding:0 20px;line-height:1.4}
+input,select,textarea,button{border-radius:5px}
+.countdown{color:#39FF14;font-weight:bold;margin-top:10px}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;overflow:auto}
+.modal-box{background:#111;color:#FFD700;max-width:520px;margin:40px auto;padding:25px;border-radius:15px;border:2px solid #39FF14;text-align:left}
+.modal-box label{display:block;margin-top:10px}
+.modal-box input, .modal-box select, .modal-box textarea{width:100%;padding:8px;margin-top:5px;background:#222;color:#FFD700;border:1px solid #39FF14}
+.modal-box button{margin-top:15px;background:#39FF14;color:black;border:none;padding:10px 20px;cursor:pointer}
+.modal-box button:hover{background:#FFD700;color:black}
+</style>
+</head>
+
+<body>
+<div class="fade-in">
+  <header>
+    <div class="brand-name">DEXTIMANI STUDIOS</div>
+    <h1>Video Coverage, Photography<br> & Live Streaming Services</h1>
+    <p>Book Professional Media Services for Events, Businesses & Productions</p>
+  </header>
+
+  <!-- VIDEO COVERAGE -->
+  <div class="neon-text">VIDEO COVERAGE</div>
+  <div class="instruction">SLIDE TO SEE SAMPLE COVERAGE TYPES</div>
+  <div id="videoCarousel" class="carousel-container"></div>
+  <div class="label-container"><span>Events</span><span>Documentaries</span><span>Corporate</span></div>
+  <button class="order-btn" onclick="openModal('video')">Book Video Coverage</button>
+
+  <!-- PHOTOGRAPHY -->
+  <div class="neon-text">PHOTOGRAPHY</div>
+  <div class="instruction">SLIDE TO SEE PHOTO SHOOT TYPES</div>
+  <p class="footer-desc">Studio, Outdoor, Corporate & Event Photography.</p>
+  <div id="photoCarousel" class="carousel-container"></div>
+  <div class="label-container"><span>Studio</span><span>Outdoor</span><span>Corporate</span></div>
+  <button class="order-btn" onclick="openModal('photo')">Book Photography</button>
+
+  <!-- LIVE STREAMING -->
+  <div class="neon-text">LIVE STREAMING</div>
+  <div class="instruction">SLIDE TO SEE STREAMING OPTIONS</div>
+  <p class="footer-desc">Multi-camera streaming for church, weddings, seminars & more.</p>
+  <div id="streamCarousel" class="carousel-container"></div>
+  <div class="label-container"><span>Single Cam</span><span>Multi Cam</span><span>Graphics</span></div>
+  <button class="order-btn" onclick="openModal('stream')">Book Live Streaming</button>
+
+  <!-- MEDIA EDITING -->
+  <div class="neon-text">POST-PRODUCTION EDITING</div>
+  <div class="instruction">SLIDE TO SEE EDITING SERVICES</div>
+  <p class="footer-desc">Video editing, photo retouching, colour grading.</p>
+  <div id="editCarousel" class="carousel-container"></div>
+  <div class="label-container"><span>Video Editing</span><span>Photo Editing</span></div>
+  <button class="order-btn" onclick="openModal('edit')">Order Editing Services</button>
+
+  <!-- EVENT DELIVERABLES -->
+  <div class="neon-text">DELIVERABLES</div>
+  <div class="instruction">SLIDE TO SEE DELIVERY OPTIONS</div>
+  <p class="footer-desc">Hard drives, flash drives, cloud links, DVDs & frames.</p>
+  <div id="deliverCarousel" class="carousel-container"></div>
+  <div class="label-container"><span>Flash</span><span>Cloud</span><span>DVD</span></div>
+  <button class="order-btn" onclick="openModal('deliver')">Request Deliverable</button>
+
+  <!-- CUSTOM -->
+  <div class="neon-text">CUSTOM REQUEST</div>
+  <div class="instruction">DESCRIBE YOUR UNIQUE MEDIA NEED</div>
+  <p class="footer-desc">Didn't find what you need? Define your own fields.</p>
+  <div id="customCarousel" class="carousel-container"></div>
+  <div class="label-container"><span>Define Fields</span></div>
+  <button class="order-btn" onclick="openModal('custom')">Send Custom Request</button>
+</div>
+
+<!-- ORDER MODAL -->
+<div id="orderModal" class="modal">
+  <div class="modal-box">
+    <h2 id="modalTitle">Place Your Order</h2>
+    <form id="orderForm">
+      <label>Name:</label><input type="text" id="clientName" required>
+      <label>Address / Venue:</label><input type="text" id="clientAddress" required>
+      <label>Event / Project Type:</label><input type="text" id="businessType" required>
+      <label id="itemLabel">Service Type:</label><select id="itemType" required></select>
+      <label>Estimated Price (₦):</label><input type="number" id="price" readonly>
+      <label>Date of Event:</label><input type="date" id="orderDate" required>
+      <label>Details / Comments:</label><textarea id="comments" rows="3"></textarea>
+      <label>Upload Sample (optional):</label><input type="file" id="sampleFile" accept="image/*">
+      <button type="submit">Download PDF & Submit</button>
+      <button type="button" onclick="closeModal()">Cancel</button>
+      <div id="countdown" class="countdown"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+/* CATEGORY OPTIONS */
+const categoryOptions={
+  "video":["Wedding Coverage","Church Event","Corporate Event","Music Video","Documentary","Interview","Product Video","Other"],
+  "photo":["Studio Shoot","Outdoor Shoot","Wedding Photography","Corporate Headshots","Birthday","Product Photography","Other"],
+  "stream":["Single Camera","Dual Camera","Multi-Camera","With Live Graphics","With Recording","Hybrid Physical/Online","Other"],
+  "edit":["Video Editing","Photo Retouching","Color Grading","Audio Mixing","VFX & Titles","Other"],
+  "deliver":["Flash Drive","Hard Drive","Cloud Link","DVD Disc","Framed Print","Album","Other"],
+  "custom":["Custom Media Service"]
+};
+
+/* PRICES */
+const categoryPrices={
+  "video":150000,"photo":50000,"stream":200000,"edit":50000,"deliver":10000,"custom":50000
+};
+
+/* IMAGE CAROUSELS (placeholders for now) */
+const carousels={
+  "video":["https://via.placeholder.com/600x400?text=Video+Coverage+A","https://via.placeholder.com/600x400?text=Video+Coverage+B"],
+  "photo":["https://via.placeholder.com/600x400?text=Photography+A","https://via.placeholder.com/600x400?text=Photography+B"],
+  "stream":["https://via.placeholder.com/600x400?text=Live+Stream+A","https://via.placeholder.com/600x400?text=Live+Stream+B"],
+  "edit":["https://via.placeholder.com/600x400?text=Editing+A","https://via.placeholder.com/600x400?text=Editing+B"],
+  "deliver":["https://via.placeholder.com/600x400?text=Deliverables+A"],
+  "custom":["https://via.placeholder.com/600x400?text=Custom+Request"]
+};
+
+function populateCarousel(sectionId,category){
+  const container=document.getElementById(sectionId);
+  container.innerHTML="";
+  carousels[category].forEach(imgSrc=>{
+    const card=document.createElement('div');
+    card.className='card';
+    const img=document.createElement('img');
+    img.src=imgSrc; img.alt=category;
+    card.appendChild(img);
+    container.appendChild(card);
+  });
+}
+
+window.onload=function(){
+  populateCarousel('videoCarousel','video');
+  populateCarousel('photoCarousel','photo');
+  populateCarousel('streamCarousel','stream');
+  populateCarousel('editCarousel','edit');
+  populateCarousel('deliverCarousel','deliver');
+  populateCarousel('customCarousel','custom');
+};
+
+const orderModal=document.getElementById('orderModal');
+const itemTypeSelect=document.getElementById('itemType');
+const priceInput=document.getElementById('price');
+const modalTitle=document.getElementById('modalTitle');
+
+function openModal(category){
+  itemTypeSelect.innerHTML="";
+  categoryOptions[category].forEach(opt=>{
+    const el=document.createElement('option');
+    el.value=opt; el.textContent=opt;
+    itemTypeSelect.appendChild(el);
+  });
+  priceInput.value=categoryPrices[category];
+  modalTitle.textContent=`Book ${category.toUpperCase()} Service`;
+  orderModal.style.display="block";
+}
+
+function closeModal(){
+  orderModal.style.display="none";
+  document.getElementById('orderForm').reset();
+  document.getElementById('countdown').textContent="";
+}
+
+document.getElementById('orderForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const name=document.getElementById('clientName').value||"Unnamed";
+  const address=document.getElementById('clientAddress').value;
+  const business=document.getElementById('businessType').value;
+  const type=itemTypeSelect.value;
+  const price=priceInput.value;
+  const date=document.getElementById('orderDate').value;
+  const comments=document.getElementById('comments').value;
+
+  const{jsPDF}=window.jspdf;
+  const pdf=new jsPDF();
+  pdf.setFontSize(16); pdf.text(`Service Booking Summary`,20,20);
+  pdf.setFontSize(12);
+  pdf.text(`Name: ${name}`,20,35);
+  pdf.text(`Venue: ${address}`,20,45);
+  pdf.text(`Project: ${business}`,20,55);
+  pdf.text(`Service: ${type}`,20,65);
+  pdf.text(`Price (₦): ${price}`,20,75);
+  pdf.text(`Date: ${date}`,20,85);
+  pdf.text(`Comments: ${comments}`,20,95);
+  pdf.save(`Booking_${type}_${Date.now()}.pdf`);
+
+  let countdown=6;
+  const cd=document.getElementById('countdown');
+  cd.textContent=`Please wait ${countdown} seconds...`;
+
+  const interval=setInterval(()=>{
+    countdown--;
+    if(countdown>0){
+      cd.textContent=`Please wait ${countdown} seconds...`;
+    }else{
+      clearInterval(interval);
+      cd.textContent=`Opening WhatsApp...`;
+
+      const phone="2349133671148";
+      const text=`New Booking:
+Name: ${name}
+Service: ${type}
+Price: ₦${price}
+Project: ${business}
+Date: ${date}`;
+
+      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`,'_blank');
+      closeModal();
+    }
+  },1000);
+});
+</script>
+</body>
+</html>

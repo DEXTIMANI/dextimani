@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEXTIMANI DIGITAL SERVICES</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #121212;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+
+  header {
+    text-align: center;
+    padding: 40px;
+  }
+
+  header h1 {
+    font-size: 2.5rem;
+    color: #39FF14;
+    margin: 0 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  header p {
+    font-size: 1rem;
+    color: #c0ffc0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #39FF14;
+    text-align: center;
+  }
+
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+  }
+
+  .catalog-item {
+    background: #1b1b1b;
+    border: 2px solid #39FF14;
+    border-radius: 12px;
+    padding: 18px;
+    box-shadow: 0 3px 10px rgba(0,255,0,0.2);
+    transition: transform 0.2s;
+  }
+
+  .catalog-item:hover {
+    transform: translateY(-5px);
+  }
+
+  .catalog-item h3 {
+    margin: 0 0 10px;
+    color: #39FF14;
+    font-size: 18px;
+  }
+
+  .catalog-item p {
+    font-size: 14px;
+    color: #c0ffc0;
+    margin-bottom: 14px;
+    line-height: 1.4em;
+  }
+
+  .catalog-item button {
+    width: 100%;
+    padding: 10px;
+    background: #39FF14;
+    border: none;
+    color: black;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  /* Popup Form */
+  .popup-bg {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 999;
+  }
+
+  .popup-content {
+    background: #1b1b1b;
+    padding: 25px;
+    width: 400px;
+    max-width: 100%;
+    border-radius: 10px;
+    border: 2px solid #39FF14;
+  }
+
+  .popup-content h2 {
+    margin-top: 0;
+    color: #39FF14;
+    font-size: 20px;
+  }
+
+  .popup-content input, textarea {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #39FF14;
+    border-radius: 6px;
+    background: #121212;
+    color: #ffffff;
+    font-size: 15px;
+  }
+
+  .popup-content button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  .send-btn {
+    background: #39FF14;
+    color: black;
+  }
+
+  .close-btn {
+    background: #ff3b3b;
+    color: white;
+  }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>DEXTIMANI DIGITAL SERVICES</h1>
+  <p>Order Printing, Web & App Development, Technical Installations, or Maintenance</p>
+</header>
+
+<div class="container">
+
+  <div class="section-title">Printing & Design Services</div>
+  <div class="catalog-grid">
+    <div class="catalog-item">
+      <h3>Logo Design</h3>
+      <p>2D/3D logos, typography, branding.</p>
+      <button onclick="openOrder('Logo Design')">Order This</button>
+    </div>
+    <div class="catalog-item">
+      <h3>Brochures & Flyers</h3>
+      <p>Business, wedding, promotional brochures.</p>
+      <button onclick="openOrder('Brochure & Flyer')">Order This</button>
+    </div>
+    <div class="catalog-item">
+      <h3>Posters & Banners</h3>
+      <p>Custom posters, banners, and event displays.</p>
+      <button onclick="openOrder('Poster & Banner')">Order This</button>
+    </div>
+  </div>
+
+  <div class="section-title">Web & App Development</div>
+  <div class="catalog-grid">
+    <div class="catalog-item">
+      <h3>Website Development</h3>
+      <p>Responsive websites, e-commerce, landing pages.</p>
+      <button onclick="openOrder('Website Development')">Order This</button>
+    </div>
+    <div class="catalog-item">
+      <h3>Mobile App Development</h3>
+      <p>iOS/Android apps, cross-platform solutions.</p>
+      <button onclick="openOrder('Mobile App Development')">Order This</button>
+    </div>
+    <div class="catalog-item">
+      <h3>Digital Marketing Services</h3>
+      <p>SEO, social media, ads, and brand promotion.</p>
+      <button onclick="openOrder('Digital Marketing')">Order This</button>
+    </div>
+  </div>
+
+  <div class="section-title">Technical Installations</div>
+  <div class="catalog-grid">
+    <div class="catalog-item">
+      <h3>Streaming Studio Setup</h3>
+      <p>Multi-camera studios, lighting, audio & workflow.</p>
+      <button onclick="openOrder('Streaming Studio Setup')">Order This</button>
+    </div>
+    <div class="catalog-item">
+      <h3>Music / Recording Studio</h3>
+      <p>Acoustic treatment, DAW setup, microphones & monitors.</p>
+      <button onclick="openOrder('Music Studio Setup')">Order This</button>
+    </div>
+    <div class="catalog-item">
+      <h3>Live Streaming & Projection</h3>
+      <p>Event streaming, projectors, network setup.</p>
+      <button onclick="openOrder('Live Streaming & Projection')">Order This</button>
+    </div>
+    <div class="catalog-item">
+      <h3>Video Studio Setup</h3>
+      <p>Creator studio with green screens, softboxes, and cameras.</p>
+      <button onclick="openOrder('Video Studio Setup')">Order This</button>
+    </div>
+  </div>
+
+  <div class="section-title">Maintenance Services</div>
+  <div class="catalog-grid">
+    <div class="catalog-item">
+      <h3>Printing & Design Maintenance</h3>
+      <p>Fix, update, or replicate existing printed materials.</p>
+      <button onclick="openOrder('Printing Maintenance')">Order This</button>
+    </div>
+    <div class="catalog-item">
+      <h3>Technical Installations Maintenance</h3>
+      <p>Studio equipment checkups, AV system maintenance.</p>
+      <button onclick="openOrder('Technical Maintenance')">Order This</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- ORDER MODAL -->
+<div class="popup-bg" id="popup">
+  <div class="popup-content">
+    <h2 id="orderTitle">Place Your Order</h2>
+
+    <input type="text" id="clientName" placeholder="Full Name" required>
+    <input type="text" id="clientPhone" placeholder="Phone / WhatsApp" required>
+    <textarea id="clientDesc" rows="4" placeholder="Describe your requirement" required></textarea>
+
+    <button class="send-btn" onclick="generatePDFAndSend()">Download PDF & Send via WhatsApp</button>
+    <button class="close-btn" onclick="closePopup()">Cancel</button>
+  </div>
+</div>
+
+<script>
+  let selectedService = "";
+
+  function openOrder(serviceName) {
+    selectedService = serviceName;
+    document.getElementById("orderTitle").innerText = serviceName;
+    document.getElementById("popup").style.display = "flex";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("clientName").value = "";
+    document.getElementById("clientPhone").value = "";
+    document.getElementById("clientDesc").value = "";
+  }
+
+  async function generatePDFAndSend() {
+    const name = document.getElementById("clientName").value;
+    const phone = document.getElementById("clientPhone").value;
+    const desc = document.getElementById("clientDesc").value;
+
+    if (!name || !phone || !desc) {
+      alert("Please fill all fields.");
+      return;
+    }
+
+    // Generate PDF
+    const { jsPDF } = window.jspdf;
+    const pdf = new jsPDF();
+    pdf.setFontSize(16);
+    pdf.text(`DEXTIMANI DIGITAL SERVICES - Order`, 20, 20);
+    pdf.setFontSize(12);
+    pdf.text(`Service: ${selectedService}`, 20, 35);
+    pdf.text(`Name: ${name}`, 20, 45);
+    pdf.text(`Phone: ${phone}`, 20, 55);
+    pdf.text(`Details: ${desc}`, 20, 65);
+    pdf.save(`Order_${selectedService}_${Date.now()}.pdf`);
+
+    // WhatsApp Message
+    const businessNumber = "2349133671148"; // replace with your number
+    const msg = encodeURIComponent(
+`📌 *DEXTIMANI DIGITAL SERVICES ORDER*
+Service: ${selectedService}
+Name: ${name}
+Phone: ${phone}
+Details: ${desc}`
+    );
+
+    window.open(`https://wa.me/${businessNumber}?text=${msg}`, "_blank");
+    closePopup();
+  }
+</script>
+
+</body>
+</html>
