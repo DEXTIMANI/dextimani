@@ -276,7 +276,7 @@ Business/Occasion: ${business}
 Date: ${date}
 Comments: ${comments}`;
 
-      window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(text)}`,'_blank');
+      window.location.href=`https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(text)}`;
       closeModal();
     }
   },1000);
