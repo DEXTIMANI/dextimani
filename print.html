@@ -8,115 +8,176 @@
 
 <style>
 body,html{margin:0;padding:0;height:100%;background:#121212;background-image:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)),url('https://www.transparenttextures.com/patterns/dark-leather.png');font-family:'Segoe UI',Tahoma,Verdana,sans-serif;color:white;text-align:center;overflow-x:hidden}
-.fade-in{animation:fadeIn 1.5s forwards}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1}}
 header{padding:40px 20px}
 .brand-name{font-size:1.2rem;letter-spacing:2px;font-weight:bold}
 h1{font-size:2.5rem;color:#d1f1ff;margin:10px 0;text-transform:uppercase}
-.neon-text{color:#39FF14;font-size:3rem;font-weight:900;margin:20px 0 5px;text-shadow:0 0 10px rgba(57,255,20,.5)}
-.instruction{color:#FFD700;font-size:.9rem;font-weight:bold;margin-bottom:30px}
-.carousel-container{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:20px;padding:20px;scrollbar-width:none}
-.carousel-container::-webkit-scrollbar{display:none}
-.card{flex:0 0 70%;max-width:300px;scroll-snap-align:center;background:white;border-radius:20px;overflow:hidden;cursor:pointer}
-.card img{width:100%;height:auto}
-.label-container{display:flex;justify-content:center;gap:40px;margin-top:15px;font-weight:bold;color:#FFD700;flex-wrap:wrap}
-.order-btn{margin-top:30px;background:transparent;border:4px solid #39FF14;color:#FFD700;padding:12px 40px;font-size:1.5rem;font-weight:bold;border-radius:5px;cursor:pointer}
-.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999;overflow:auto}
-.modal-box{background:#111;color:#FFD700;max-width:520px;margin:40px auto;padding:25px;border-radius:15px;border:2px solid #39FF14;text-align:left}
-.modal-box input,.modal-box select,.modal-box textarea{width:100%;padding:8px;margin-top:5px;background:#222;color:#FFD700;border:1px solid #39FF14}
+.neon-text{color:#39FF14;font-size:2.2rem;font-weight:900;margin:30px 0 10px}
+.carousel-container{display:flex;overflow-x:auto;gap:20px;padding:20px}
+.card{flex:0 0 70%;max-width:300px;background:white;border-radius:15px;overflow:hidden}
+.card img{width:100%}
+.order-btn{margin-top:15px;background:#39FF14;border:none;color:black;padding:10px 30px;font-weight:bold;cursor:pointer}
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:9999}
+.modal-box{background:#111;color:#FFD700;max-width:520px;margin:40px auto;padding:20px;border-radius:10px}
+.modal-box input,.modal-box select,.modal-box textarea{width:100%;padding:8px;margin-top:5px;background:#222;color:white;border:1px solid #39FF14}
 .countdown{color:#39FF14;margin-top:10px}
 </style>
 </head>
 
 <body>
 
-<!-- (CONTENT REMAINS SAME — no need to touch your UI) -->
+<header>
+<div class="brand-name">DEXTIMANI</div>
+<h1>Graphic Design & Prints</h1>
+<p>Make Your Order - Let’s Create Something Great!</p>
+</header>
+
+<!-- SECTIONS -->
+<div class="neon-text">LOGOS</div>
+<button class="order-btn" onclick="openModal('logo')">Order Logo</button>
+
+<div class="neon-text">BROCHURES</div>
+<button class="order-btn" onclick="openModal('brochure')">Order Brochure</button>
+
+<div class="neon-text">FLYERS</div>
+<button class="order-btn" onclick="openModal('flyer')">Order Flyer</button>
+
+<div class="neon-text">POSTERS</div>
+<button class="order-btn" onclick="openModal('poster')">Order Poster</button>
+
+<div class="neon-text">JOTTERS</div>
+<button class="order-btn" onclick="openModal('jotter')">Order Jotter</button>
+
+<div class="neon-text">BANNERS</div>
+<button class="order-btn" onclick="openModal('banner')">Order Banner</button>
+
+<div class="neon-text">BUSINESS CARDS</div>
+<button class="order-btn" onclick="openModal('businesscard')">Order Business Card</button>
+
+<div class="neon-text">T-SHIRT PRINTS</div>
+<button class="order-btn" onclick="openModal('tshirt')">Order T-Shirt</button>
+
+<div class="neon-text">STICKERS</div>
+<button class="order-btn" onclick="openModal('sticker')">Order Stickers</button>
+
+<div class="neon-text">CUSTOM ORDER</div>
+<button class="order-btn" onclick="openModal('custom')">Custom Order</button>
 
 <!-- MODAL -->
 <div id="orderModal" class="modal">
-  <div class="modal-box">
-    <h2 id="modalTitle">Place Your Order</h2>
-    <form id="orderForm">
-      <input type="text" id="clientName" placeholder="Name" required>
-      <input type="text" id="clientAddress" placeholder="Address" required>
-      <input type="text" id="businessType" placeholder="Business / Occasion" required>
-      <select id="itemType"></select>
-      <input type="number" id="quantity" value="1">
-      <input type="number" id="price" readonly>
-      <input type="date" id="orderDate">
-      <textarea id="comments" placeholder="Comments"></textarea>
-      <button type="submit">Submit Order</button>
-      <button type="button" onclick="closeModal()">Cancel</button>
-      <div id="countdown" class="countdown"></div>
-    </form>
-  </div>
+<div class="modal-box">
+
+<h2 id="modalTitle"></h2>
+
+<form id="orderForm">
+<input type="text" id="clientName" placeholder="Name" required>
+<input type="text" id="clientAddress" placeholder="Address" required>
+<input type="text" id="businessType" placeholder="Business / Occasion" required>
+
+<select id="itemType"></select>
+
+<input type="number" id="quantity" value="1">
+<input type="number" id="price" readonly>
+
+<input type="date" id="orderDate">
+
+<textarea id="comments" placeholder="Comments"></textarea>
+
+<button type="submit">Submit Order</button>
+<button type="button" onclick="closeModal()">Cancel</button>
+
+<div id="countdown" class="countdown"></div>
+
+</form>
+
+</div>
 </div>
 
 <script>
-// (your categoryOptions, categoryPrices, carousels remain unchanged)
+
+// CATEGORY OPTIONS (expanded)
+const categoryOptions = {
+logo:["2D Logo","3D Logo","Minimalist","Typography","Mascot Logo"],
+brochure:["Bi-Fold","Tri-Fold","Z-Fold","Company Profile"],
+flyer:["Event Flyer","Church Flyer","Business Promo"],
+poster:["Burial Poster","Event Poster","Movie Poster"],
+jotter:["Plain","Spiral","Branded"],
+banner:["Outdoor Banner","Roll-up","Flex Banner"],
+businesscard:["Single Sided","Double Sided","Premium"],
+tshirt:["Front Print","Full Design","Custom"],
+sticker:["Round","Square","Die-cut"],
+custom:["Custom Item"]
+};
+
+// PRICES
+const categoryPrices = {
+logo:3000,brochure:20000,flyer:5000,poster:10000,jotter:8000,
+banner:15000,businesscard:5000,tshirt:7000,sticker:3000,custom:5000
+};
+
+document.addEventListener("DOMContentLoaded", function(){
 
 const orderModal=document.getElementById('orderModal');
 const itemTypeSelect=document.getElementById('itemType');
 const priceInput=document.getElementById('price');
 const modalTitle=document.getElementById('modalTitle');
 
-function openModal(category){
-  itemTypeSelect.innerHTML="";
-  categoryOptions[category].forEach(opt=>{
-    let el=document.createElement('option');
-    el.value=opt;
-    el.textContent=opt;
-    itemTypeSelect.appendChild(el);
-  });
-  priceInput.value=categoryPrices[category];
-  modalTitle.textContent=`Order ${category.toUpperCase()}`;
-  orderModal.style.display="block";
+window.openModal=function(category){
+itemTypeSelect.innerHTML="";
+categoryOptions[category].forEach(opt=>{
+let el=document.createElement('option');
+el.value=opt;
+el.textContent=opt;
+itemTypeSelect.appendChild(el);
+});
+priceInput.value=categoryPrices[category];
+modalTitle.textContent=`Order ${category.toUpperCase()}`;
+orderModal.style.display="block";
 }
 
-function closeModal(){
-  orderModal.style.display="none";
-  document.getElementById('orderForm').reset();
-  document.getElementById('countdown').textContent="";
+window.closeModal=function(){
+orderModal.style.display="none";
+document.getElementById('orderForm').reset();
+document.getElementById('countdown').textContent="";
 }
 
 document.getElementById('orderForm').addEventListener('submit', function(e){
-  e.preventDefault();
+e.preventDefault();
 
-  const name=document.getElementById('clientName').value;
-  const address=document.getElementById('clientAddress').value;
-  const business=document.getElementById('businessType').value;
-  const type=itemTypeSelect.value;
-  const quantity=document.getElementById('quantity').value;
-  const price=priceInput.value;
-  const date=document.getElementById('orderDate').value;
-  const comments=document.getElementById('comments').value;
+const name=document.getElementById('clientName').value;
+const address=document.getElementById('clientAddress').value;
+const business=document.getElementById('businessType').value;
+const type=itemTypeSelect.value;
+const quantity=document.getElementById('quantity').value;
+const price=priceInput.value;
+const date=document.getElementById('orderDate').value;
+const comments=document.getElementById('comments').value;
 
-  const { jsPDF } = window.jspdf;
-  const pdf=new jsPDF();
+const { jsPDF } = window.jspdf;
+const pdf=new jsPDF();
 
-  pdf.text("Order Summary",20,20);
-  pdf.text(`Name: ${name}`,20,30);
-  pdf.text(`Item: ${type}`,20,40);
-  pdf.text(`Qty: ${quantity}`,20,50);
-  pdf.text(`Price: ₦${price}`,20,60);
-  pdf.text(`Date: ${date}`,20,70);
+pdf.text("Order Summary",20,20);
+pdf.text(`Name: ${name}`,20,30);
+pdf.text(`Item: ${type}`,20,40);
+pdf.text(`Qty: ${quantity}`,20,50);
+pdf.text(`Price: ₦${price}`,20,60);
+pdf.text(`Date: ${date}`,20,70);
 
-  pdf.save("order.pdf");
+pdf.save("order.pdf");
 
-  let t=3;
-  const cd=document.getElementById('countdown');
+let t=3;
+const cd=document.getElementById('countdown');
 
-  const timer=setInterval(()=>{
-    t--;
+const timer=setInterval(()=>{
+t--;
 
-    if(t>0){
-      cd.textContent=`Redirecting in ${t}s...`;
-    }else{
-      clearInterval(timer);
+if(t>0){
+cd.textContent=`Redirecting in ${t}s...`;
+}else{
+clearInterval(timer);
 
-      cd.textContent="Opening WhatsApp... Tap SEND to confirm";
+cd.textContent="Opening WhatsApp... Tap SEND to confirm";
 
-      const msg=`New Print Order:
+const msg=`New Print Order:
 Name: ${name}
 Item: ${type}
 Quantity: ${quantity}
@@ -126,12 +187,15 @@ Address: ${address}
 Date: ${date}
 Comments: ${comments}`;
 
-      const phone="2348128965563";
+const phone="2348128965563";
 
-      window.location.href=`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`;
-    }
+window.location.href=`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`;
+}
 
-  },1000);
+},1000);
+
+});
+
 });
 </script>
 
