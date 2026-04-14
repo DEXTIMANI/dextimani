@@ -16,13 +16,11 @@ body,html{
   overflow-x:hidden
 }
 
-/* Head */
 header{padding:40px 20px}
 .brand-name{font-size:1.2rem;font-weight:bold;color:#7ed957}
 h1{font-size:2.2rem;color:#7ed957;margin:10px 0;font-weight:800;text-transform:uppercase}
 .subtitle{color:#d1f1ff;font-size:1rem;margin-bottom:20px}
 
-/* Category Titles */
 .section-title{
   font-size:1.8rem;
   margin-top:40px;
@@ -37,7 +35,6 @@ h1{font-size:2.2rem;color:#7ed957;margin:10px 0;font-weight:800;text-transform:u
   margin-bottom:15px;
 }
 
-/* Carousel */
 .carousel{
   display:flex;
   gap:15px;
@@ -75,7 +72,6 @@ h1{font-size:2.2rem;color:#7ed957;margin:10px 0;font-weight:800;text-transform:u
   border-radius:4px;
 }
 
-/* Buttons */
 .order-btn{
   margin-top:10px;
   background:#7ed957;
@@ -89,7 +85,6 @@ h1{font-size:2.2rem;color:#7ed957;margin:10px 0;font-weight:800;text-transform:u
 }
 .order-btn:hover{filter:brightness(1.1)}
 
-/* Modal */
 .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:9999;overflow:auto}
 .modal-box{
   background:#111;
@@ -179,10 +174,8 @@ window.onload=function(){
     });
   });
 };
-
 </script>
 
-<!-- MODAL -->
 <div id="orderModal" class="modal">
   <div class="modal-box">
     <h2 id="modalTitle">Request Service</h2>
@@ -191,7 +184,7 @@ window.onload=function(){
       <label>Business / Organization:</label><input type="text" id="clientBiz">
       <label>Project Type:</label><select id="projectType"></select>
       <label>Project Description:</label><textarea id="projectDesc" rows="3"></textarea>
-      <label>Budget (₦):</label><input type="number" id="budget" placeholder="Optional">
+      <label>Budget (₦):</label><input type="number" id="budget">
       <label>Deadline:</label><input type="date" id="deadline">
       <button type="submit">Download PDF & Send</button>
       <button type="button" onclick="closeModal()">Cancel</button>
@@ -218,8 +211,9 @@ function closeModal(){
   document.getElementById('countdown').textContent="";
 }
 
-document.getElementById('orderForm').addEventListener('submit', async e=>{
+document.getElementById('orderForm').addEventListener('submit', e=>{
   e.preventDefault();
+
   const name=document.getElementById('clientName').value;
   const biz=document.getElementById('clientBiz').value;
   const type=projectType.value;
@@ -238,24 +232,32 @@ document.getElementById('orderForm').addEventListener('submit', async e=>{
   pdf.text(`Description: ${desc}`,20,85);
   pdf.save("project_request.pdf");
 
-  let t=5;
+  let t=3;
   const cd=document.getElementById('countdown');
-  cd.textContent=`Sending to WhatsApp in ${t}s...`;
 
   const timer=setInterval(()=>{
     t--;
-    if(t>0){cd.textContent=`Sending to WhatsApp in ${t}s...`;return;}
-    clearInterval(timer);
-    const phone="2348128965563";
-    const msg=`New Project Request:
+
+    if(t>0){
+      cd.textContent=`Redirecting to WhatsApp in ${t}s...`;
+    }else{
+      clearInterval(timer);
+
+      cd.textContent="Opening WhatsApp... Tap SEND to complete request";
+
+      const phone="2348128965563";
+
+      const msg=`New Project Request:
 Name: ${name}
 Business: ${biz}
 Project: ${type}
 Budget: ₦${budget}
 Deadline: ${deadline}
 Description: ${desc}`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,'_blank');
-    closeModal();
+
+      window.location.href=`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msg)}`;
+    }
+
   },1000);
 });
 </script>
