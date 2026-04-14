@@ -37,152 +37,116 @@ input,select,textarea,button{border-radius:5px}
 
 <body>
 <div class="fade-in">
-  <header>
-    <div class="brand-name">DEXTIMANI</div>
-    <h1>Graphic Design <br> and Prints</h1>
-    <p>Make Your Order <br> Let's Create Something Great!</p>
-  </header>
 
-  <!-- ORIGINAL SECTIONS (UNCHANGED) -->
-  <div class="neon-text">LOGOS</div>
-  <div class="instruction">SLIDE TO ORDER LOGO TYPE</div>
-  <div id="logoCarousel" class="carousel-container"></div>
-  <div class="label-container"><span>2D Designs</span><span>3D Designs</span></div>
-  <button class="order-btn" onclick="openModal('logo')">Order Any</button>
+<header>
+<div class="brand-name">DEXTIMANI</div>
+<h1>Graphic Design <br> and Prints</h1>
+<p>Make Your Order <br> Let's Create Something Great!</p>
+</header>
 
-  <div class="neon-text">BROCHURES</div>
-  <div class="instruction">SLIDE TO CHOOSE BROCHURE TYPE</div>
-  <p class="footer-desc">High-quality brochures to showcase your business in style.</p>
-  <div id="brochureCarousel" class="carousel-container"></div>
-  <div class="label-container"><span>Flyer</span><span>Folded</span></div>
-  <button class="order-btn" onclick="openModal('brochure')">Order Brochure</button>
+<!-- ALL ORIGINAL SECTIONS -->
+<div class="neon-text">LOGOS</div>
+<div class="instruction">SLIDE TO ORDER LOGO TYPE</div>
+<div id="logoCarousel" class="carousel-container"></div>
+<div class="label-container"><span>2D Designs</span><span>3D Designs</span></div>
+<button class="order-btn" onclick="openModal('logo')">Order Any</button>
 
-  <div class="neon-text">WEDDING CARDS & FLYERS</div>
-  <div class="instruction">SLIDE TO CHOOSE YOUR FLYER TYPE</div>
-  <p class="footer-desc">Beautiful wedding cards and flyers.</p>
-  <div id="flyerCarousel" class="carousel-container"></div>
-  <div class="label-container"><span>Classic</span><span>Elegant</span></div>
-  <button class="order-btn" onclick="openModal('flyer')">Order Flyer / Wedding Card</button>
+<div class="neon-text">BROCHURES</div>
+<div class="instruction">SLIDE TO CHOOSE BROCHURE TYPE</div>
+<p class="footer-desc">High-quality brochures to showcase your business in style.</p>
+<div id="brochureCarousel" class="carousel-container"></div>
+<div class="label-container"><span>Flyer</span><span>Folded</span></div>
+<button class="order-btn" onclick="openModal('brochure')">Order Brochure</button>
 
-  <!-- 🔥 EXTRA ADDED (no removal) -->
-  <div class="neon-text">BUSINESS CARDS</div>
-  <div class="instruction">SLIDE TO CHOOSE CARD TYPE</div>
-  <p class="footer-desc">Professional business cards to boost your brand identity.</p>
-  <div id="bizCarousel" class="carousel-container"></div>
-  <div class="label-container"><span>Matte</span><span>Glossy</span><span>Premium</span></div>
-  <button class="order-btn" onclick="openModal('biz')">Order Business Card</button>
+<div class="neon-text">WEDDING CARDS & FLYERS</div>
+<div class="instruction">SLIDE TO CHOOSE YOUR FLYER TYPE</div>
+<p class="footer-desc">Beautiful wedding cards and flyers.</p>
+<div id="flyerCarousel" class="carousel-container"></div>
+<div class="label-container"><span>Classic</span><span>Elegant</span></div>
+<button class="order-btn" onclick="openModal('flyer')">Order Flyer / Wedding Card</button>
 
-  <div class="neon-text">T-SHIRT PRINTS</div>
-  <div class="instruction">SLIDE TO CHOOSE PRINT STYLE</div>
-  <p class="footer-desc">Custom T-shirt printing for events and brands.</p>
-  <div id="shirtCarousel" class="carousel-container"></div>
-  <div class="label-container"><span>Front Print</span><span>Full Print</span></div>
-  <button class="order-btn" onclick="openModal('shirt')">Order T-Shirt</button>
+<div class="neon-text">POSTERS</div>
+<div class="instruction">SLIDE TO CHOOSE POSTER TYPE</div>
+<p class="footer-desc">Custom posters for burials, anniversaries, and other occasions.</p>
+<div id="posterCarousel" class="carousel-container"></div>
+<div class="label-container"><span>Burials</span><span>Anniversaries</span></div>
+<button class="order-btn" onclick="openModal('poster')">Order Poster</button>
+
+<div class="neon-text">JOTTERS</div>
+<div class="instruction">SLIDE TO CHOOSE JOTTER TYPE</div>
+<p class="footer-desc">Custom jotters for businesses or schools.</p>
+<div id="jotterCarousel" class="carousel-container"></div>
+<div class="label-container"><span>Plain</span></div>
+<button class="order-btn" onclick="openModal('jotter')">Order Jotter</button>
+
+<div class="neon-text">BANNERS</div>
+<div class="instruction">SLIDE TO CHOOSE BANNER TYPE</div>
+<p class="footer-desc">Eye-catching banners for events or promotions.</p>
+<div id="bannerCarousel" class="carousel-container"></div>
+<div class="label-container"><span>Outdoor</span></div>
+<button class="order-btn" onclick="openModal('banner')">Order Banner</button>
+
+<div class="neon-text">ENLARGED PHOTOS</div>
+<div class="instruction">SLIDE TO CHOOSE PHOTO TYPE</div>
+<p class="footer-desc">High-quality enlarged photos.</p>
+<div id="photoCarousel" class="carousel-container"></div>
+<button class="order-btn" onclick="openModal('photo')">Order Enlarged Photo</button>
+
+<div class="neon-text">CUSTOM ORDER</div>
+<button class="order-btn" onclick="openModal('custom')">Order Custom Item</button>
 
 </div>
 
-<!-- MODAL (UNCHANGED) -->
+<!-- MODAL -->
 <div id="orderModal" class="modal">
-  <div class="modal-box">
-    <h2 id="modalTitle">Place Your Order</h2>
-    <form id="orderForm">
-      <label>Name:</label><input type="text" id="clientName" required>
-      <label>Address:</label><input type="text" id="clientAddress" required>
-      <label>Business / Occasion:</label><input type="text" id="businessType" required>
-      <label>Item Type:</label><select id="itemType"></select>
-      <label>Quantity:</label><input type="number" id="quantity" value="1">
-      <label>Estimated Price (₦):</label><input type="number" id="price" readonly>
-      <label>Date:</label><input type="date" id="orderDate">
-      <label>Comments:</label><textarea id="comments"></textarea>
-      <button type="submit">Download PDF & Submit</button>
-      <button type="button" onclick="closeModal()">Cancel</button>
-      <div id="countdown" class="countdown"></div>
-    </form>
-  </div>
+<div class="modal-box">
+<h2 id="modalTitle"></h2>
+<form id="orderForm">
+<input type="text" id="clientName" placeholder="Name" required>
+<input type="text" id="clientAddress" placeholder="Address" required>
+<input type="text" id="businessType" placeholder="Business / Occasion" required>
+<select id="itemType"></select>
+<input type="number" id="quantity" value="1">
+<input type="number" id="price" readonly>
+<input type="date" id="orderDate">
+<textarea id="comments" placeholder="Comments"></textarea>
+<button type="submit">Submit</button>
+<button type="button" onclick="closeModal()">Cancel</button>
+<div id="countdown"></div>
+</form>
+</div>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function(){
 
-const categoryOptions = {
-  logo:["2D Design","3D Design","Minimalist","Typography"],
-  brochure:["Flyer","Folded","Tri-fold"],
-  flyer:["Classic","Elegant","Modern"],
-  biz:["Matte","Glossy","Premium"],
-  shirt:["Front Print","Full Print"]
+const carousels={
+logo:["https://via.placeholder.com/400?text=Logo1","https://via.placeholder.com/400?text=Logo2"],
+brochure:["https://via.placeholder.com/400?text=Brochure"],
+flyer:["https://via.placeholder.com/400?text=Flyer"],
+poster:["https://via.placeholder.com/400?text=Poster"],
+jotter:["https://via.placeholder.com/400?text=Jotter"],
+banner:["https://via.placeholder.com/400?text=Banner"],
+photo:["https://via.placeholder.com/400?text=Photo"]
 };
 
-const categoryPrices = {
-  logo:3000, brochure:50000, flyer:50000, biz:5000, shirt:7000
-};
-
-const orderModal=document.getElementById('orderModal');
-const itemTypeSelect=document.getElementById('itemType');
-const priceInput=document.getElementById('price');
-const modalTitle=document.getElementById('modalTitle');
-
-window.openModal=function(category){
-  itemTypeSelect.innerHTML="";
-  categoryOptions[category].forEach(opt=>{
-    let el=document.createElement('option');
-    el.value=opt;
-    el.textContent=opt;
-    itemTypeSelect.appendChild(el);
-  });
-  priceInput.value=categoryPrices[category];
-  modalTitle.textContent=`Order ${category.toUpperCase()}`;
-  orderModal.style.display="block";
-}
-
-window.closeModal=function(){
-  orderModal.style.display="none";
-}
-
-document.getElementById('orderForm').addEventListener('submit', function(e){
-  e.preventDefault();
-
-  const name=document.getElementById('clientName').value;
-  const address=document.getElementById('clientAddress').value;
-  const business=document.getElementById('businessType').value;
-  const type=itemTypeSelect.value;
-  const quantity=document.getElementById('quantity').value;
-  const price=priceInput.value;
-  const date=document.getElementById('orderDate').value;
-  const comments=document.getElementById('comments').value;
-
-  const { jsPDF } = window.jspdf;
-  const pdf=new jsPDF();
-  pdf.text("Order Summary",20,20);
-  pdf.text(`Name: ${name}`,20,30);
-  pdf.text(`Item: ${type}`,20,40);
-  pdf.text(`Qty: ${quantity}`,20,50);
-  pdf.text(`Price: ₦${price}`,20,60);
-  pdf.save("order.pdf");
-
-  let t=3;
-  const cd=document.getElementById('countdown');
-
-  const timer=setInterval(()=>{
-    t--;
-    if(t>0){
-      cd.textContent=`Redirecting in ${t}s...`;
-    }else{
-      clearInterval(timer);
-      cd.textContent="Opening WhatsApp... Tap SEND";
-
-      const msg=`New Order:
-Name: ${name}
-Item: ${type}
-Qty: ${quantity}
-Price: ₦${price}
-Address: ${address}
-Date: ${date}
-Comments: ${comments}`;
-
-      window.location.href=`https://api.whatsapp.com/send?phone=2348128965563&text=${encodeURIComponent(msg)}`;
-    }
-  },1000);
+function populateCarousel(id,cat){
+const container=document.getElementById(id);
+carousels[cat].forEach(src=>{
+const div=document.createElement('div');
+div.className='card';
+div.innerHTML=`<img src="${src}">`;
+container.appendChild(div);
 });
+}
+
+populateCarousel('logoCarousel','logo');
+populateCarousel('brochureCarousel','brochure');
+populateCarousel('flyerCarousel','flyer');
+populateCarousel('posterCarousel','poster');
+populateCarousel('jotterCarousel','jotter');
+populateCarousel('bannerCarousel','banner');
+populateCarousel('photoCarousel','photo');
 
 });
 </script>
