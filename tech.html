@@ -7,7 +7,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
 <style>
-/* ===== BODY & HERO ===== */
 body, html {
   margin:0; padding:0;
   font-family:Poppins, sans-serif;
@@ -19,20 +18,8 @@ body, html {
   text-align:center;
   padding:40px 20px;
   background:#0d6efd;
-  color:white;
 }
 
-.hero h1 {
-  margin:0 0 10px;
-  font-size:2.5rem;
-}
-
-.hero p {
-  font-size:1.1rem;
-  margin:0;
-}
-
-/* ===== CATALOG CARDS ===== */
 .catalog {
   max-width:1000px;
   margin:30px auto;
@@ -47,22 +34,9 @@ body, html {
   border: 2px solid #25d366;
   border-radius:12px;
   padding:20px;
-  transition: transform 0.2s ease;
 }
 
-.catalog-card:hover {
-  transform: scale(1.03);
-}
-
-.catalog-card h3 {
-  margin-top:0;
-  color:#25d366;
-}
-
-.catalog-card p {
-  font-size:0.95rem;
-  color:#cfd3ce;
-}
+.catalog-card h3 {color:#25d366}
 
 .catalog-card button {
   margin-top:15px;
@@ -71,16 +45,10 @@ body, html {
   border:none;
   border-radius:6px;
   background:#25d366;
-  color:black;
   font-weight:bold;
   cursor:pointer;
 }
 
-.catalog-card button:hover {
-  background:#1ebc57;
-}
-
-/* ===== MODAL ===== */
 .modal-bg {
   display:none;
   position:fixed;
@@ -88,202 +56,154 @@ body, html {
   background:rgba(0,0,0,0.85);
   justify-content:center;
   align-items:center;
-  z-index:9999;
-  overflow:auto;
 }
 
 .modal-box {
   background:#1a1a1a;
   color:#25d366;
   max-width:500px;
-  margin:50px auto;
   padding:25px;
   border-radius:12px;
   border:2px solid #25d366;
 }
 
-.modal-box h2 {
-  margin-top:0;
-  text-align:center;
+.modal-box input,.modal-box textarea{
+  width:100%;padding:10px;margin-top:5px;
+  border:1px solid #25d366;background:#121212;color:white;
 }
 
-.modal-box label {
-  display:block;
-  margin-top:12px;
-}
+.send-btn {background:#25d366;color:black;margin-top:15px}
+.close-btn {background:#dc3545;color:white;margin-top:10px}
 
-.modal-box input,
-.modal-box textarea {
-  width:100%;
-  padding:10px;
-  margin-top:5px;
-  border:1px solid #25d366;
-  border-radius:6px;
-  background:#121212;
-  color:white;
-}
-
-.modal-box button {
-  margin-top:15px;
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:6px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.send-btn {
-  background:#25d366;
-  color:black;
-}
-
-.send-btn:hover {
-  background:#1ebc57;
-}
-
-.close-btn {
-  background:#dc3545;
-  color:white;
+#countdown{
   margin-top:10px;
-}
-
-.close-btn:hover {
-  background:#a80020;
+  color:#25d366;
+  font-size:.9rem;
 }
 </style>
-
 </head>
+
 <body>
 
-<!-- HERO -->
 <header class="hero">
   <h1>Technical Installations & Studio Setup</h1>
-  <p>Professional setup of media studios, live streaming, projection, audio & video systems</p>
+  <p>Professional setup of media studios, streaming, projection & AV systems</p>
 </header>
 
-<!-- CATALOG -->
 <section class="catalog">
 
-  <div class="catalog-card">
-    <h3>Live Streaming Studio Setup</h3>
-    <p>Multi-camera streaming studio with switching, lighting, and audio mixing.</p>
-    <button onclick="openModal('Live Streaming Studio Setup')">Order Now</button>
-  </div>
+<div class="catalog-card">
+<h3>Live Streaming Studio Setup</h3>
+<button onclick="openModal('Live Streaming Studio Setup')">Order Now</button>
+</div>
 
-  <div class="catalog-card">
-    <h3>Music Studio Installation</h3>
-    <p>Acoustic treatment, microphones, monitors, DAW setup & vocal booth.</p>
-    <button onclick="openModal('Music Studio Installation')">Order Now</button>
-  </div>
+<div class="catalog-card">
+<h3>Music Studio Installation</h3>
+<button onclick="openModal('Music Studio Installation')">Order Now</button>
+</div>
 
-  <div class="catalog-card">
-    <h3>Video Production Studio Setup</h3>
-    <p>Lighting rigs, cameras, green/white screens, and editing pipeline.</p>
-    <button onclick="openModal('Video Production Studio Setup')">Order Now</button>
-  </div>
+<div class="catalog-card">
+<h3>Video Production Studio Setup</h3>
+<button onclick="openModal('Video Production Studio Setup')">Order Now</button>
+</div>
 
-  <div class="catalog-card">
-    <h3>Church Live Projection & Streaming</h3>
-    <p>Cameras, switchers, projectors & network streaming setup.</p>
-    <button onclick="openModal('Church Live Projection & Streaming')">Order Now</button>
-  </div>
+<div class="catalog-card">
+<h3>Church Live Projection & Streaming</h3>
+<button onclick="openModal('Church Live Projection & Streaming')">Order Now</button>
+</div>
 
-  <div class="catalog-card">
-    <h3>Conference & Seminar Recording Setup</h3>
-    <p>PA system integration, multi-mic audio, camera recording & streaming.</p>
-    <button onclick="openModal('Conference & Seminar Recording Setup')">Order Now</button>
-  </div>
+<div class="catalog-card">
+<h3>Conference & Seminar Setup</h3>
+<button onclick="openModal('Conference & Seminar Setup')">Order Now</button>
+</div>
 
-  <div class="catalog-card">
-    <h3>Projection System Installation</h3>
-    <p>Projectors, screens, AV routing & synchronization.</p>
-    <button onclick="openModal('Projection System Installation')">Order Now</button>
-  </div>
+<div class="catalog-card">
+<h3>Projection System Installation</h3>
+<button onclick="openModal('Projection System Installation')">Order Now</button>
+</div>
 
 </section>
 
-<!-- MODAL -->
 <div class="modal-bg" id="orderModal">
-  <div class="modal-box">
-    <h2 id="modalTitle">Order Service</h2>
+<div class="modal-box">
 
-    <label>Full Name</label>
-    <input type="text" id="clientName" placeholder="Your Name" required>
+<h2 id="modalTitle"></h2>
 
-    <label>Phone / WhatsApp</label>
-    <input type="text" id="clientPhone" placeholder="+234..." required>
+<input id="clientName" placeholder="Full Name">
+<input id="clientPhone" placeholder="Phone / WhatsApp">
+<input id="clientLocation" placeholder="Location">
+<textarea id="clientNotes" placeholder="Additional Requirements"></textarea>
 
-    <label>Location / Address</label>
-    <input type="text" id="clientLocation" placeholder="City / State" required>
+<button class="send-btn" onclick="sendOrder()">Generate PDF & Send</button>
+<button class="close-btn" onclick="closeModal()">Cancel</button>
 
-    <label>Additional Requirements</label>
-    <textarea id="clientNotes" rows="4" placeholder="Room size, equipment preference, etc."></textarea>
+<div id="countdown"></div>
 
-    <button class="send-btn" onclick="sendOrder()">Generate PDF & Send WhatsApp</button>
-    <button class="close-btn" onclick="closeModal()">Cancel</button>
-  </div>
+</div>
 </div>
 
 <script>
-let selectedService = "";
+let selectedService="";
 
-function openModal(serviceName){
-  selectedService = serviceName;
-  document.getElementById("modalTitle").innerText = serviceName;
-  document.getElementById("orderModal").style.display = "flex";
+function openModal(service){
+  selectedService=service;
+  document.getElementById("modalTitle").innerText=service;
+  document.getElementById("orderModal").style.display="flex";
 }
 
 function closeModal(){
-  document.getElementById("orderModal").style.display = "none";
-  document.getElementById("clientName").value = "";
-  document.getElementById("clientPhone").value = "";
-  document.getElementById("clientLocation").value = "";
-  document.getElementById("clientNotes").value = "";
+  document.getElementById("orderModal").style.display="none";
 }
 
 function sendOrder(){
-  const name = document.getElementById("clientName").value;
-  const phone = document.getElementById("clientPhone").value;
-  const location = document.getElementById("clientLocation").value;
-  const notes = document.getElementById("clientNotes").value;
+  const name=document.getElementById("clientName").value;
+  const phone=document.getElementById("clientPhone").value;
+  const location=document.getElementById("clientLocation").value;
+  const notes=document.getElementById("clientNotes").value;
 
   if(!name || !phone || !location){
     alert("Please fill all required fields.");
     return;
   }
 
-  // ===== GENERATE PDF =====
   const { jsPDF } = window.jspdf;
-  const pdf = new jsPDF();
-  pdf.setFontSize(16);
-  pdf.text("Technical Installation Order", 20, 20);
-  pdf.setFontSize(12);
-  pdf.text(`Service: ${selectedService}`, 20, 30);
-  pdf.text(`Name: ${name}`, 20, 40);
-  pdf.text(`Phone: ${phone}`, 20, 50);
-  pdf.text(`Location: ${location}`, 20, 60);
-  pdf.text(`Additional Notes:`, 20, 70);
-  const splitNotes = pdf.splitTextToSize(notes, 160);
-  pdf.text(splitNotes, 20, 80);
+  const pdf=new jsPDF();
 
-  // Download PDF
-  pdf.save(`Order_${selectedService}_${Date.now()}.pdf`);
+  pdf.text("Installation Order",20,20);
+  pdf.text(`Service: ${selectedService}`,20,30);
+  pdf.text(`Name: ${name}`,20,40);
+  pdf.text(`Phone: ${phone}`,20,50);
+  pdf.text(`Location: ${location}`,20,60);
+  pdf.text(`Notes: ${notes}`,20,70);
 
-  // ===== SEND WHATSAPP =====
-  const message = encodeURIComponent(
-`📌 *Installation Request*
+  pdf.save("installation_order.pdf");
+
+  let t=3;
+  const cd=document.getElementById("countdown");
+
+  const timer=setInterval(()=>{
+    t--;
+
+    if(t>0){
+      cd.textContent=`Redirecting in ${t}s...`;
+    }else{
+      clearInterval(timer);
+
+      cd.textContent="Opening WhatsApp... Tap SEND to confirm";
+
+      const msg=`Installation Request:
 Service: ${selectedService}
 Name: ${name}
 Phone: ${phone}
 Location: ${location}
-Notes: ${notes}`
-  );
+Notes: ${notes}`;
 
-  const whatsappNumber = "2348128965563"; // Replace with your number
-  window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
+      const whatsappNumber="2348128965563";
 
-  closeModal();
+      window.location.href=`https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(msg)}`;
+    }
+
+  },1000);
 }
 </script>
 
